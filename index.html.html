@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEMCS BANK | Loan Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>KEMCS BANK</h1>
+    <p>LOAN MANAGEMENT SYSTEM</p>
+</header>
+
+<nav>
+    <button class="active" onclick="showPage('dashboard', this)">Dashboard</button>
+    <button onclick="showPage('loans', this)">Loan Applications</button>
+    <button onclick="showPage('payments', this)">Payments</button>
+</nav>
+
+<main>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page">
+        <h2>Dashboard</h2>
+        <p class="subtitle">Welcome to KEMCS BANK Management System.</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Loans</h3>
+                <p id="totalLoans">₱0.00</p>
+            </div>
+
+            <div class="card">
+                <h3>Approved Loans</h3>
+                <p id="approvedLoans">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Pending Applications</h3>
+                <p id="pendingLoans">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Rejected Loans</h3>
+                <p id="rejectedLoans">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Payments</h3>
+                <p id="totalPayments">₱0.00</p>
+            </div>
+
+            <div class="card">
+                <h3>Outstanding Balance</h3>
+                <p id="outstandingBalance">₱0.00</p>
+            </div>
+
+        </div>
+
+        <div class="welcome">
+            <h3>Welcome to KEMCS BANK</h3>
+            <p>Manage loan applications, approve or reject loans, and monitor customer payments.</p>
+        </div>
+    </section>
+
+    <!-- LOAN APPLICATIONS -->
+    <section id="loans" class="page hidden">
+
+        <h2>Loan Applications</h2>
+        <p class="subtitle">Create and manage customer loan applications.</p>
+
+        <form id="loanForm">
+
+            <input type="text" id="borrowerName"
+                placeholder="Customer Full Name" required>
+
+            <input type="number" id="loanAmount"
+                placeholder="Loan Amount (₱)" min="1" step="0.01" required>
+
+            <input type="number" id="interestRate"
+                placeholder="Interest Rate (%)" min="0" step="0.01" required>
+
+            <input type="number" id="loanDuration"
+                placeholder="Duration (Months)" min="1" step="1" required>
+
+            <button type="submit">Submit Application</button>
+
+        </form>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Loan Amount</th>
+                        <th>Interest</th>
+                        <th>Total Payment</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="loanList"></tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <!-- PAYMENTS -->
+    <section id="payments" class="page hidden">
+
+        <h2>Loan Payments</h2>
+        <p class="subtitle">Record and monitor customer payments.</p>
+
+        <form id="paymentForm">
+
+            <select id="paymentLoan" required>
+                <option value="">Select Approved Loan</option>
+            </select>
+
+            <input type="number" id="paymentAmount"
+                placeholder="Payment Amount (₱)"
+                min="0.01" step="0.01" required>
+
+            <button type="submit">Record Payment</button>
+
+        </form>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Payment Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="paymentList"></tbody>
+            </table>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 KEMCS BANK | LOAN MANAGEMENT SYSTEM</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
